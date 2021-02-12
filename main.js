@@ -8,8 +8,8 @@ xhr.responseType = 'json';
 xhr.send();
 
 xhr.onload = function () {
-    if (xhr.status === 200) {
-        xhr.response.results.forEach(el => {
+    if (this.status === 200) {
+        this.response.results.forEach(el => {
             const $li = document.createElement('li');
             $li.textContent = el.title;
             
@@ -26,9 +26,9 @@ xhr.onload = function () {
                         xhr2.send();
 
                         xhr2.onload = function () {
-                            if (xhr2.status === 200) {
+                            if (this.status === 200) {
                                 const $liInner = document.createElement('li');
-                                $liInner.textContent = xhr2.response.name;
+                                $liInner.textContent = this.response.name;
                                 $ulInner.append($liInner);
                                 $li.append($ulInner);
                             };
